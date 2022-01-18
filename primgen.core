@@ -1,0 +1,29 @@
+CAPI=2:
+# Copyright lowRISC contributors.
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+name: "lowrisc:prim:primgen:0.1"
+
+filesets:
+  python_files:
+    files:
+      - util/primgen.py
+    file_type: pythonSource
+  python_tpl_files:
+    files:
+      - util/primgen/abstract_prim.sv.tpl
+      - util/primgen/prim_pkg.core.tpl
+      - util/primgen/prim_pkg.sv.tpl
+    file_type: pythonSource
+
+generators:
+  primgen:
+    interpreter: python3
+    command: util/primgen.py
+
+targets:
+  default:
+    filesets:
+      - python_files
+      - python_tpl_files
+
